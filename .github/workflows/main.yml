@@ -39,5 +39,5 @@ jobs:
       
        - name: Run Terraform Apply
          run: terraform apply -auto-approve
-         #continue-on-error: true
+         ##continue-on-error: true
     
