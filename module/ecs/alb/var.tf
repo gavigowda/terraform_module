@@ -6,6 +6,7 @@
 variable "alb_name" {
   description = "The name of the ALB. Do not include the environment name since this module will automatically append it to the value of this variable."
   type        = string
+  default     = "my-ops-alb"
   # AWS imposes a 32 character limit on the names of ALBs, so here we catch any overages client-side
   validation {
     condition     = length(var.alb_name) <= 32
@@ -16,6 +17,7 @@ variable "alb_name" {
 variable "is_internal_alb" {
   description = "If the ALB should only accept traffic from within the VPC, set this to true. If it should accept traffic from the public Internet, set it to false."
   type        = bool
+  default     = "true"
 }
 
 variable "additional_security_group_ids" {
@@ -33,11 +35,13 @@ variable "ssl_policy" {
 variable "vpc_id" {
   description = "The VPC ID in which this ALB will be placed."
   type        = string
+  default     = "vpc-0d79df86290b8e7bf"
 }
 
 variable "vpc_subnet_ids" {
   description = "A list of the subnets into which the ALB will place its underlying nodes. Include one subnet per Availabability Zone. If the ALB is public-facing, these should be public subnets. Otherwise, they should be private subnets."
   type        = list(string)
+  default     = ["subnet-0f64269bb65d95c1a" , "subnet-0df60931a131678ff"]
 }
 
 # ---------------------------------------------------------------------------------------------------------------------
